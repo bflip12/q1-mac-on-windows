@@ -31,8 +31,8 @@ The layout is compiled in, so a wipe comes back to it. Lighting effect and colou
 
 usevia.app → Settings → **Show Design tab** → Design → load `via/q1-via-definition.json`. Then:
 
-- **Configure → Indicators:** Caps Lock (on/off, colour, brightness) and Fn Lock (live on/off, double-tap Fn on/off, which parts light up — F1–F12, Fn key, Fn Lock key — colour, brightness).
-- **Custom** key tab: **FnLk** — drag it to any key or layer to move the Fn-lock toggle.
+- **Configure → Indicators:** Caps Lock (on/off, colour, brightness) and Fn Lock (live on/off, double-tap Fn on/off, which parts light up (F1–F12, Fn key, Fn Lock key), colour, brightness).
+- **Custom** key tab: **FnLk**. Drag it to any key or layer to move the Fn-lock toggle.
 
 The Keychron Launcher can't load custom definitions, so it won't show these extras.
 
@@ -42,4 +42,4 @@ Holding Fn turns layer `WIN_FN` on with `MO()`. A plain `TG()` on an Fn combo ca
 
 ## PC control (auto-lock)
 
-The lock state is VIA custom value channel 0, id 8. A host can set it over raw HID (usage page 0xFF60) with the 32-byte report `[0x07, 0x00, 0x08, 1|0]` — e.g. to lock automatically while a game has focus.
+The lock state is VIA custom value channel 0, id 8. A host can set it over raw HID (usage page 0xFF60) with the 32-byte report `[0x07, 0x00, 0x08, 1|0]`, for example to lock automatically while a game has focus.

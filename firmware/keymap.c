@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-/* Keychron Q1 V2 ANSI knob — custom keymap
+/* Keychron Q1 V2 ANSI knob: custom keymap
  *
  * Based on Keychron's VIA keymap, with:
  *  - the Mac-style Windows layout baked in as the default (Mac-style top row, keycap-matched right column,
- *    bottom-right keys matched to Mac keycaps: Cmd, Option, Fn — Keychron's stock map has Cmd, Fn, Ctrl)
+ *    bottom-right keys matched to Mac keycaps: Cmd, Option, Fn; Keychron's stock map has Cmd, Fn, Ctrl)
  *  - Double-tap Fn toggles Fn lock (on by default, switchable in VIA)
  *  - FN_LOCK custom keycode (VIA "Custom" tab), default on Fn+Home. Keeps the Fn layer on until
  *    toggled off; holding/releasing Fn doesn't cancel it. Windows mode only.

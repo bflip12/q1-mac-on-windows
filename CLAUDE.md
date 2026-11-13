@@ -40,4 +40,8 @@ These repeat my global defaults for sessions where `~/.claude/CLAUDE.md` isn't l
 
 ## Gotchas
 
-<!-- Add as they're found: the symptom, the cause, what to do instead. -->
+- **CI build fails with "No rule to make target" and "Cannot run qmk hello".** The
+  keyboard path is fine. The `qmk_cli` container is missing Python packages from
+  Keychron's `requirements.txt`, and QMK refuses to build without them. The workflow's
+  "Install QMK Python requirements" step installs them into the Python that runs `qmk`.
+  Keep that step before the build; if it breaks, check the path it prints.

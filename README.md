@@ -38,6 +38,12 @@ Status: working on the author's machine. The firmware compiles cleanly; flash at
 
 Physical modifiers in Windows mode: ⌘ = Alt, Option = Win, Control = Ctrl. The script turns ⌘ combos into Ctrl combos.
 
+## Decisions
+
+- 2026-11-12: Firmware binaries aren't committed. CI builds them from `firmware/` on Keychron's `playground` branch and attaches them to tagged releases, so every `.bin` matches published source.
+- 2026-11-12: Only the keymap lives here; Keychron's QMK tree is cloned at build time instead of forked, and each release notes the exact upstream commit.
+- 2026-11-12: GPL-2.0-or-later for everything, since the firmware is derived from QMK.
+
 ## License
 
 Firmware files are derived from Keychron's QMK code and are GPL-2.0-or-later, like QMK. The rest is offered under the same license. See [LICENSE](LICENSE).

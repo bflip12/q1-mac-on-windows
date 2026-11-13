@@ -28,6 +28,10 @@ jobs:
         run: |
           git clone --depth 1 -b playground https://github.com/Keychron/qmk_firmware.git qmk
           cd qmk && git submodule update --init --recursive --depth 1
+          # Record the exact upstream commit so each release names its full source (GPL).
+          QMK_SHA="$(git rev-parse HEAD)"
+          echo "Keychron QMK commit: $QMK_SHA"
+          echo "QMK_SHA=$QMK_SHA" >> "$GITHUB_ENV"
 
       # The qmk_cli image lacks some packages Keychron's tree requires, and QMK
       # refuses to build without them. Install them into QMK's own Python.
@@ -57,6 +61,13 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3 # v3.0.4
         with:
+          body: |
+            Firmware for the Keychron Q1 V2 (ANSI, knob), `mac_fnlock` keymap, built by CI.
+
+            - `q1-mac-firmware.bin`: flash with QMK Toolbox. Steps: [firmware/README.md](https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}/firmware/README.md#flash-windows)
+            - `q1-via-definition.json`: load in usevia.app (Design tab) for the Indicators menu and the Fn Lock key.
+
+            Source: this repo at `${{ github.ref_name }}`, built on [Keychron/qmk_firmware@${{ env.QMK_SHA }}](https://github.com/Keychron/qmk_firmware/tree/${{ env.QMK_SHA }}) (`playground` branch). Licence: GPL-2.0-or-later.
           files: |
             q1-mac-firmware.bin
             via/q1-via-definition.json

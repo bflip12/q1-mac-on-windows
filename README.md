@@ -1,8 +1,8 @@
-# Keychron Q1 V2 — Mac habits on Windows
+# Keychron Q1 V2: Mac habits on Windows
 
 A sketch for using a Keychron Q1 V2 (ANSI, knob) on Windows with Mac muscle memory, without giving up gaming.
 
-- **Firmware (QMK):** Mac-style top row in Windows mode, a real Fn lock (double-tap Fn, or Fn+Home — both configurable in VIA), lit indicators for Fn lock and Caps Lock with colours you set in VIA, hold Fn+Esc to enter update mode.
+- **Firmware (QMK):** Mac-style top row in Windows mode, a real Fn lock (double-tap Fn, or Fn+Home; both configurable in VIA), lit indicators for Fn lock and Caps Lock with colours you set in VIA, hold Fn+Esc to enter update mode.
 - **AutoHotkey v2 script:** ⌘+C/V/Z…, ⌘/Option + arrows and Backspace like macOS, window snapping, tab switching. Turns itself off in World of Warcraft (add your own games) and switches the keyboard’s Fn lock on while the game has focus; works in admin windows, runs for every user.
 - **Companion apps:** PowerToys Command Palette on ⌘+Space (the script maps it to the palette's default shortcut), Twinkle Tray for external-monitor brightness on F1/F2.
 
@@ -32,7 +32,7 @@ Status: working on the author's machine. The firmware compiles cleanly; flash at
 | F7–F9 | Previous / Play-pause / Next | F7–F9 |
 | F10–F12 | Mute / Volume down / Volume up | F10–F12 |
 | Home | Home | Fn lock on/off |
-| Fn (double-tap) | — | Fn lock on/off (toggle in VIA) |
+| Fn (double-tap) | Nothing | Fn lock on/off (toggle in VIA) |
 | Esc | Esc | Hold 2 s: update mode (plain Esc while Fn lock is on) |
 | Knob | Volume, press = mute | same |
 

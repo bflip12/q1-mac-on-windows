@@ -29,6 +29,18 @@ jobs:
           git clone --depth 1 -b playground https://github.com/Keychron/qmk_firmware.git qmk
           cd qmk && git submodule update --init --recursive --depth 1
 
+      # The qmk_cli image lacks some packages Keychron's tree requires, and QMK
+      # refuses to build without them. Install them into QMK's own Python.
+      - name: Install QMK Python requirements
+        run: |
+          PY="$(dirname "$(readlink -f "$(command -v qmk)")")/python3"
+          echo "QMK Python: $PY"
+          if command -v uv >/dev/null 2>&1; then
+            uv pip install --python "$PY" -r qmk/requirements.txt
+          else
+            "$PY" -m pip install -r qmk/requirements.txt
+          fi
+
       - name: Add keymap and build
         run: |
           KM=qmk/keyboards/keychron/q1v2/ansi_encoder/keymaps/mac_fnlock

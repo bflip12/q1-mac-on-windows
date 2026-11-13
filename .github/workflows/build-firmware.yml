@@ -1,0 +1,50 @@
+# Builds the firmware from this repo's keymap on top of Keychron's QMK tree.
+# Push to main or open a PR: .bin uploaded as a workflow artifact.
+# Push a tag like v1.0: .bin attached to a GitHub release.
+name: Build firmware
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+    paths: ["firmware/**", ".github/workflows/**"]
+  pull_request:
+    paths: ["firmware/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # the Release step creates a GitHub release
+    container: ghcr.io/qmk/qmk_cli
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Get Keychron QMK (playground branch)
+        run: |
+          git clone --depth 1 -b playground https://github.com/Keychron/qmk_firmware.git qmk
+          cd qmk && git submodule update --init --recursive --depth 1
+
+      - name: Add keymap and build
+        run: |
+          KM=qmk/keyboards/keychron/q1v2/ansi_encoder/keymaps/mac_fnlock
+          mkdir -p "$KM" && cp firmware/keymap.c firmware/config.h firmware/rules.mk "$KM/"
+          cd qmk && make keychron/q1v2/ansi_encoder:mac_fnlock
+          cp .build/keychron_q1v2_ansi_encoder_mac_fnlock.bin ../q1-mac-firmware.bin
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: q1-mac-firmware
+          path: q1-mac-firmware.bin
+
+      - name: Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3 # v3.0.4
+        with:
+          files: |
+            q1-mac-firmware.bin
+            via/q1-via-definition.json

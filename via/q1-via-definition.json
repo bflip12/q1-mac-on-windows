@@ -1,0 +1,500 @@
+{
+ "name": "Keychron Q1V2 ANSI Knob (Fn Lock + Indicators)",
+ "vendorId": "0x3434",
+ "productId": "0x0107",
+ "matrix": {
+  "rows": 6,
+  "cols": 16
+ },
+ "customKeycodes": [
+  {
+   "name": "Fn Lock",
+   "title": "Toggle Fn lock: keeps the Fn layer on (Windows mode)",
+   "shortName": "FnLk"
+  }
+ ],
+ "keycodes": [
+  "qmk_rgb_matrix_keycodes"
+ ],
+ "menus": [
+  {
+   "label": "Lighting",
+   "content": [
+    {
+     "label": "Backlight",
+     "content": [
+      {
+       "label": "Brightness",
+       "type": "range",
+       "options": [
+        0,
+        255
+       ],
+       "content": [
+        "id_qmk_rgb_matrix_brightness",
+        3,
+        1
+       ]
+      },
+      {
+       "label": "Effect",
+       "type": "dropdown",
+       "content": [
+        "id_qmk_rgb_matrix_effect",
+        3,
+        2
+       ],
+       "options": [
+        [
+         "00. None",
+         0
+        ],
+        [
+         "01. SOLID_COLOR",
+         1
+        ],
+        [
+         "02. BREATHING",
+         2
+        ],
+        [
+         "03. BAND_SPIRAL_VAL",
+         3
+        ],
+        [
+         "04. CYCLE_ALL",
+         4
+        ],
+        [
+         "05. CYCLE_LEFT_RIGHT",
+         5
+        ],
+        [
+         "06. CYCLE_UP_DOWN",
+         6
+        ],
+        [
+         "07. RAINBOW_MOVING_CHEVRON",
+         7
+        ],
+        [
+         "08. CYCLE_OUT_IN",
+         8
+        ],
+        [
+         "09. CYCLE_OUT_IN_DUAL",
+         9
+        ],
+        [
+         "10. CYCLE_PINWHEEL",
+         10
+        ],
+        [
+         "11. CYCLE_SPIRAL",
+         11
+        ],
+        [
+         "12. DUAL_BEACON",
+         12
+        ],
+        [
+         "13. RAINBOW_BEACON",
+         13
+        ],
+        [
+         "14. JELLYBEAN_RAINDROPS",
+         14
+        ],
+        [
+         "15. PIXEL_RAIN",
+         15
+        ],
+        [
+         "16. TYPING_HEATMAP",
+         16
+        ],
+        [
+         "17. DIGITAL_RAIN",
+         17
+        ],
+        [
+         "18. REACTIVE_SIMPLE",
+         18
+        ],
+        [
+         "19. REACTIVE_MULTIWIDE",
+         19
+        ],
+        [
+         "20. REACTIVE_MULTINEXUS",
+         20
+        ],
+        [
+         "21. SPLASH",
+         21
+        ],
+        [
+         "22. SOLID_SPLASH",
+         22
+        ]
+       ]
+      },
+      {
+       "showIf": "{id_qmk_rgb_matrix_effect} > 1",
+       "label": "Effect Speed",
+       "type": "range",
+       "options": [
+        0,
+        255
+       ],
+       "content": [
+        "id_qmk_rgb_matrix_effect_speed",
+        3,
+        3
+       ]
+      },
+      {
+       "showIf": "{id_qmk_rgb_matrix_effect} != 0",
+       "label": "Color",
+       "type": "color",
+       "content": [
+        "id_qmk_rgb_matrix_color",
+        3,
+        4
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "Indicators",
+   "content": [
+    {
+     "label": "Caps Lock",
+     "content": [
+      {
+       "label": "Light Caps Lock key when on",
+       "type": "toggle",
+       "content": [
+        "id_caps_on",
+        0,
+        1
+       ]
+      },
+      {
+       "showIf": "{id_caps_on} == 1",
+       "label": "Brightness",
+       "type": "range",
+       "options": [
+        0,
+        255
+       ],
+       "content": [
+        "id_caps_bright",
+        0,
+        3
+       ]
+      },
+      {
+       "showIf": "{id_caps_on} == 1",
+       "label": "Color",
+       "type": "color",
+       "content": [
+        "id_caps_color",
+        0,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Fn Lock",
+     "content": [
+      {
+       "label": "Fn lock on (live)",
+       "type": "toggle",
+       "content": [
+        "id_lock_state",
+        0,
+        8
+       ]
+      },
+      {
+       "label": "Double-tap Fn toggles lock",
+       "type": "toggle",
+       "content": [
+        "id_dbl_tap_fn",
+        0,
+        11
+       ]
+      },
+      {
+       "label": "Show indicator",
+       "type": "toggle",
+       "content": [
+        "id_lock_on",
+        0,
+        4
+       ]
+      },
+      {
+       "showIf": "{id_lock_on} == 1",
+       "label": "Light F1-F12",
+       "type": "toggle",
+       "content": [
+        "id_light_top",
+        0,
+        7
+       ]
+      },
+      {
+       "showIf": "{id_lock_on} == 1",
+       "label": "Light Fn key",
+       "type": "toggle",
+       "content": [
+        "id_light_fn",
+        0,
+        10
+       ]
+      },
+      {
+       "showIf": "{id_lock_on} == 1",
+       "label": "Light Fn Lock key",
+       "type": "toggle",
+       "content": [
+        "id_light_lock",
+        0,
+        9
+       ]
+      },
+      {
+       "showIf": "{id_lock_on} == 1",
+       "label": "Brightness",
+       "type": "range",
+       "options": [
+        0,
+        255
+       ],
+       "content": [
+        "id_lock_bright",
+        0,
+        6
+       ]
+      },
+      {
+       "showIf": "{id_lock_on} == 1",
+       "label": "Color",
+       "type": "color",
+       "content": [
+        "id_lock_color",
+        0,
+        5
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "layouts": {
+  "keymap": [
+   [
+    {
+     "c": "#777777"
+    },
+    "0,0\nESC",
+    {
+     "x": 0.25,
+     "c": "#cccccc"
+    },
+    "0,1",
+    "0,2",
+    "0,3",
+    "0,4",
+    {
+     "x": 0.25,
+     "c": "#aaaaaa"
+    },
+    "0,5",
+    "0,6",
+    "0,7",
+    "0,8",
+    {
+     "x": 0.25,
+     "c": "#cccccc"
+    },
+    "0,9",
+    "0,10",
+    "0,11",
+    "0,12",
+    {
+     "x": 0.25,
+     "c": "#aaaaaa"
+    },
+    "0,13",
+    {
+     "x": 0.25
+    },
+    "0,15\n\n\n\n\n\n\n\n\ne0"
+   ],
+   [
+    {
+     "y": 0.25,
+     "c": "#cccccc"
+    },
+    "1,0",
+    "1,1",
+    "1,2",
+    "1,3",
+    "1,4",
+    "1,5",
+    "1,6",
+    "1,7",
+    "1,8",
+    "1,9",
+    "1,10",
+    "1,11",
+    "1,12",
+    {
+     "c": "#aaaaaa",
+     "w": 2
+    },
+    "1,13",
+    {
+     "x": 0.25
+    },
+    "1,15"
+   ],
+   [
+    {
+     "w": 1.5
+    },
+    "2,0",
+    {
+     "c": "#cccccc"
+    },
+    "2,1",
+    "2,2",
+    "2,3",
+    "2,4",
+    "2,5",
+    "2,6",
+    "2,7",
+    "2,8",
+    "2,9",
+    "2,10",
+    "2,11",
+    "2,12",
+    {
+     "w": 1.5
+    },
+    "2,13",
+    {
+     "x": 0.25,
+     "c": "#aaaaaa"
+    },
+    "2,15"
+   ],
+   [
+    {
+     "w": 1.75
+    },
+    "3,0",
+    {
+     "c": "#cccccc"
+    },
+    "3,1",
+    "3,2",
+    "3,3",
+    "3,4",
+    "3,5",
+    "3,6",
+    "3,7",
+    "3,8",
+    "3,9",
+    "3,10",
+    "3,11",
+    {
+     "c": "#777777",
+     "w": 2.25
+    },
+    "3,13",
+    {
+     "x": 0.25,
+     "c": "#aaaaaa"
+    },
+    "3,15"
+   ],
+   [
+    {
+     "w": 2.25
+    },
+    "4,0",
+    {
+     "c": "#cccccc"
+    },
+    "4,2",
+    "4,3",
+    "4,4",
+    "4,5",
+    "4,6",
+    "4,7",
+    "4,8",
+    "4,9",
+    "4,10",
+    "4,11",
+    {
+     "c": "#aaaaaa",
+     "w": 1.75
+    },
+    "4,13"
+   ],
+   [
+    {
+     "y": -0.75,
+     "x": 14.25,
+     "c": "#777777"
+    },
+    "4,14"
+   ],
+   [
+    {
+     "y": -0.25,
+     "c": "#aaaaaa",
+     "w": 1.25
+    },
+    "5,0",
+    {
+     "w": 1.25
+    },
+    "5,1",
+    {
+     "w": 1.25
+    },
+    "5,2",
+    {
+     "c": "#cccccc",
+     "w": 6.25
+    },
+    "5,6",
+    {
+     "c": "#aaaaaa"
+    },
+    "5,10",
+    "5,11",
+    "5,12"
+   ],
+   [
+    {
+     "y": -0.75,
+     "x": 13.25,
+     "c": "#777777"
+    },
+    "5,13",
+    "5,14",
+    "5,15"
+   ]
+  ]
+ }
+}

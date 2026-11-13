@@ -1,0 +1,14 @@
+# LF everywhere, so files don't change between the Mac and the Windows PC.
+* text=auto eol=lf
+
+# Windows-only scripts keep CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+*.png binary
+*.jpg binary
+*.webp binary
+*.ico binary
+*.icns binary
+*.pdf binary

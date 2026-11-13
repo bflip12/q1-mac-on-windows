@@ -1,0 +1,28 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Secrets and local config
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Claude Code: personal, never committed
+CLAUDE.local.md
+.claude/settings.local.json
+
+# Private notes repo, cloned in place
+private/
+
+# Firmware build outputs: firmware comes from CI only
+*.bin
+*.hex
+.build/

@@ -6,7 +6,7 @@ A sketch for using a Keychron Q1 V2 (ANSI, knob) on Windows with Mac muscle memo
 - **AutoHotkey v2 script:** ⌘+C/V/Z…, ⌘/Option + arrows and Backspace like macOS, window snapping, tab switching. Turns itself off in World of Warcraft (add your own games) and switches the keyboard’s Fn lock on while the game has focus; works in admin windows, runs for every user.
 - **Companion apps:** PowerToys Command Palette on ⌘+Space (the script maps it to the palette's default shortcut), Twinkle Tray for external-monitor brightness on F1/F2.
 
-Status: working on the author's machine. The firmware compiles cleanly; flash at your own risk (you can always reflash Keychron's stock firmware).
+Status: v1.0.0 is flashed and tested on a Q1 V2 ANSI knob: every key, the Fn lock and the indicators work. Flash at your own risk (you can always reflash Keychron's stock firmware).
 
 **Download (latest release):** [q1-mac-firmware.bin](https://github.com/bflip12/q1-mac-on-windows/releases/latest/download/q1-mac-firmware.bin) · [q1-via-definition.json](https://github.com/bflip12/q1-mac-on-windows/releases/latest/download/q1-via-definition.json) · [all releases](https://github.com/bflip12/q1-mac-on-windows/releases). Flashing steps are in [`firmware/README.md`](firmware/README.md#flash-windows).
 

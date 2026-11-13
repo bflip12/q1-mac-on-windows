@@ -8,6 +8,8 @@ A sketch for using a Keychron Q1 V2 (ANSI, knob) on Windows with Mac muscle memo
 
 Status: working on the author's machine. The firmware compiles cleanly; flash at your own risk (you can always reflash Keychron's stock firmware).
 
+**Download (latest release):** [q1-mac-firmware.bin](https://github.com/bflip12/q1-mac-on-windows/releases/latest/download/q1-mac-firmware.bin) · [q1-via-definition.json](https://github.com/bflip12/q1-mac-on-windows/releases/latest/download/q1-via-definition.json) · [all releases](https://github.com/bflip12/q1-mac-on-windows/releases). Flashing steps are in [`firmware/README.md`](firmware/README.md#flash-windows).
+
 ## What's here
 
 | Path | What |

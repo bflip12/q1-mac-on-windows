@@ -17,8 +17,10 @@ for k in StrSplit("abcdefgijklnoprstuvwxyz0123456789=-,./") {
     Hotkey "!+" k, SendKeys.Bind("^+" k)
 }
 Hotkey "!+z", SendKeys.Bind("^y")     ; redo
-Hotkey "!+3", SendKeys.Bind("#+s")    ; screenshot
-Hotkey "!+4", SendKeys.Bind("#+s")    ; screenshot (area)
+; Screenshots open the Snipping overlay directly. Sending Win+Shift+S while Alt+Shift are held made
+; AutoHotkey add a Ctrl mask key = Ctrl+Alt+Shift+Win, the "Office key", which opened Microsoft 365 Copilot.
+Hotkey "!+3", (*) => Run("ms-screenclip:")    ; screenshot
+Hotkey "!+4", (*) => Run("ms-screenclip:")    ; screenshot (area)
 HotIf
 
 ; ---------------------------------------------------------------------------
@@ -153,4 +155,5 @@ $!Space::Send "#!{Space}"
 
 ; In WoW only: stop cmd+Space (Alt+Space) from opening the PowerToys launcher over the game
 #HotIf WinActive("ahk_group Games")
-$!Space::return   ; $ = use the keyboard hook so it wins over PowerToys' own hotkey#HotIf
+$!Space::return   ; $ = use the keyboard hook so it wins over PowerToys' own hotkey
+#HotIf

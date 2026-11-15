@@ -45,3 +45,8 @@ These repeat my global defaults for sessions where `~/.claude/CLAUDE.md` isn't l
   Keychron's `requirements.txt`, and QMK refuses to build without them. The workflow's
   "Install QMK Python requirements" step installs them into the Python that runs `qmk`.
   Keep that step before the build; if it breaks, check the path it prints.
+- **mac-keys doesn't start at sign-in, and CodeIntegrity logs event 3033 for
+  `AutoHotkey64_UIA.exe`.** Smart App Control is on and blocks the UI Access build (the
+  installer signs it with a certificate made on the PC). `setup-admin-windows.ahk`
+  checks `HKLM\SYSTEM\CurrentControlSet\Control\CI\Policy\VerifiedAndReputablePolicyState`
+  (1 = on) and uses its scheduled-task fallback with the normally signed build instead.

@@ -19,7 +19,7 @@ Status: v1.0.0 is flashed and tested on a Q1 V2 ANSI knob: every key, the Fn loc
 | `via/q1-via-definition.json` | VIA definition: adds the Indicators menu and the Fn Lock custom key |
 | `windows/mac-keys.ahk` | The Mac-shortcuts script |
 | `windows/setup-all-users.ahk` | One-time: copies the script to `C:\Users\Public\Scripts` and starts it for all users |
-| `windows/setup-admin-windows.ahk` | One-time: starts the script through AutoHotkey's UI Access build so it works in admin windows |
+| `windows/setup-admin-windows.ahk` | One-time: makes the script work in admin windows, through AutoHotkey's UI Access build or, when Smart App Control is on, a scheduled task |
 | `docs/setup-guide.md` | Full setup, start to finish |
 
 ## Key map (Windows mode)

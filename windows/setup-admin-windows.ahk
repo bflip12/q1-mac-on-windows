@@ -2,6 +2,8 @@
 ; One-time: make mac-keys.ahk work in admin windows, for every user.
 ; Preferred: start it with AutoHotkey's "UI Access" build (no elevation needed).
 ; Fallback: a scheduled task that starts it with highest privileges at any user's logon.
+; The fallback is also used when Smart App Control is on: it blocks the UI Access build,
+; which the AutoHotkey installer signs with a certificate made on this PC.
 
 if !A_IsAdmin {
     try Run '*RunAs "' A_AhkPath '" "' A_ScriptFullPath '"'
@@ -17,14 +19,17 @@ lnk := A_StartupCommon "\mac-keys.lnk"
 SplitPath A_AhkPath, , &ahkDir
 uia := ahkDir "\AutoHotkey64_UIA.exe"
 L("AutoHotkey: " A_AhkPath)
+; 0 = off, 1 = on, 2 = evaluation (evaluation doesn't block)
+sac := RegRead("HKLM\SYSTEM\CurrentControlSet\Control\CI\Policy", "VerifiedAndReputablePolicyState", 0)
+L("Smart App Control state: " sac)
 
-if FileExist(uia) {
+if FileExist(uia) && sac != 1 {
     FileCreateShortcut uia, lnk, , '"' script '"'
     L("UI Access build found; startup shortcut now uses " uia)
     try RunWait 'schtasks /delete /tn "MacKeys" /f', , "Hide"
     launch := '"' uia '" "' script '"'
 } else {
-    L("UI Access build not found; using scheduled task instead")
+    L(FileExist(uia) ? "Smart App Control is on; using scheduled task instead of the UI Access build" : "UI Access build not found; using scheduled task instead")
     xml := A_Temp "\mackeys-task.xml"
     try FileDelete xml
     FileAppend '

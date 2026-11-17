@@ -1,7 +1,8 @@
 #Requires AutoHotkey v2.0
 ; One-time: make mac-keys.ahk work in admin windows, for every user.
 ; Preferred: start it with AutoHotkey's "UI Access" build (no elevation needed).
-; Fallback: a scheduled task that starts it with highest privileges at any user's logon.
+; Fallback: a scheduled task that starts it with highest privileges at any user's logon,
+; and again on unlock if it has stopped (wake and unlock are not logons).
 ; The fallback is also used when Smart App Control is on: it blocks the UI Access build,
 ; which the AutoHotkey installer signs with a certificate made on this PC.
 
@@ -36,10 +37,13 @@ if FileExist(uia) && sac != 1 {
     (
 <?xml version="1.0" encoding="UTF-16"?>
 <Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
-  <Triggers><LogonTrigger><Enabled>true</Enabled></LogonTrigger></Triggers>
+  <Triggers>
+    <LogonTrigger><Enabled>true</Enabled></LogonTrigger>
+    <SessionStateChangeTrigger><Enabled>true</Enabled><StateChange>SessionUnlock</StateChange></SessionStateChangeTrigger>
+  </Triggers>
   <Principals><Principal id="Author"><GroupId>S-1-5-32-545</GroupId><RunLevel>HighestAvailable</RunLevel></Principal></Principals>
   <Settings>
-    <MultipleInstancesPolicy>Parallel</MultipleInstancesPolicy>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
     <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
     <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
     <ExecutionTimeLimit>PT0S</ExecutionTimeLimit>
@@ -57,11 +61,12 @@ if FileExist(uia) && sac != 1 {
         FileDelete lnk
         L("Removed all-users startup shortcut (task replaces it)")
     }
-    launch := '"' A_AhkPath '" "' script '"'
+    ; Start it through the task so the task owns the running copy and IgnoreNew sees it.
+    launch := 'schtasks /run /tn "MacKeys"'
 }
 
 ; Restart the running copy with the new rights
-Run launch
+Run launch, , "Hide"
 L("Restarted mac-keys.ahk")
 L("DONE")
 MsgBox "Admin support set up. Details in admin-support-log.txt", "Mac keys", "Iconi T10"

@@ -43,6 +43,7 @@ Physical modifiers in Windows mode: ⌘ = Alt, Option = Win, Control = Ctrl. The
 - 2026-11-12: Firmware binaries aren't committed. CI builds them from `firmware/` on Keychron's `playground` branch and attaches them to tagged releases, so every `.bin` matches published source.
 - 2026-11-12: Only the keymap lives here; Keychron's QMK tree is cloned at build time instead of forked, and each release notes the exact upstream commit.
 - 2026-11-12: GPL-2.0-or-later for everything, since the firmware is derived from QMK.
+- 2026-11-17: The admin-windows scheduled task also runs on unlock and ignores new runs while one is active, so the script comes back after wake if it stopped, without a second copy.
 
 ## License
 

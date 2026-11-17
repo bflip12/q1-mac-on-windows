@@ -20,7 +20,7 @@ No-firmware alternative: in VIA (stock firmware), set layer 2's top row to F13, 
 
 1. Put `mac-keys.ahk`, `setup-all-users.ahk` and `setup-admin-windows.ahk` in one folder.
 2. Run `setup-all-users.ahk` and approve the admin prompt. It copies the script to `C:\Users\Public\Scripts`, adds it to the all-users Startup folder and starts it.
-3. Run `setup-admin-windows.ahk` and approve. It points the startup shortcut at `AutoHotkey64_UIA.exe` so the shortcuts also work in admin windows; if that build is missing, or Windows Smart App Control is on (it blocks the UI Access build), it creates a scheduled task instead that starts the normal build with admin rights at sign-in. If the shortcuts stop starting at sign-in after Smart App Control turns itself on, run this script again.
+3. Run `setup-admin-windows.ahk` and approve. It points the startup shortcut at `AutoHotkey64_UIA.exe` so the shortcuts also work in admin windows; if that build is missing, or Windows Smart App Control is on (it blocks the UI Access build), it creates a scheduled task instead that starts the normal build with admin rights at sign-in, and again on unlock if it has stopped. If the shortcuts stop starting at sign-in after Smart App Control turns itself on, run this script again.
 4. To edit later: change `C:\Users\Public\Scripts\mac-keys.ahk`, then tray icon → Reload Script.
 
 In games listed in the script's `Games` group, the shortcuts are off, tapping Option/⌘ alone does nothing, and ⌘+Space is swallowed so the launcher doesn't pop over the game.
